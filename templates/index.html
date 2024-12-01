@@ -2,11 +2,13 @@
 <html>
 <head>
 <title>Prediction App Title</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
-<h1>Prediction App</h1>
+<h1>REVIEW SENTIMENT PREDICTION</h1>
 <form action="/submit" method='POST'>
-    <label for="review">enter a review:</label><br>
-    <input type="text" id="review" name="review">
+    <label for="review">Enter a review:</label><br>
+    <textarea id="review" name="review"></textarea>
     <p><button type="submit">Submit</button></p>
 </form>

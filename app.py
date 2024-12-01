@@ -6,10 +6,26 @@ import re
 
 app = Flask(__name__)
 
-MODEL_PATH = './mcdonalds_sentiment_model.pkl'
+'''
+Pretrained Models: model, tf_idf
+
+model: a pre-trained multinomial naive-bayes classifier
+tf_idf: a pre-trained 5000 word tf-idf matrix to vectorize our text
+'''
 
 model = joblib.load('./mcdonalds_sentiment_model.pkl')
 tf_idf = joblib.load('./tfidf_vectorizer.pkl')
+
+'''
+Function: clean_text(text)
+
+Input: review as a string
+
+Output: cleaned review (lowercase, removed punctuation, stemming)
+
+We're taking the request and cleaning the review to ensure that we're just working with the words.
+We could remove stopwords aswell but they aren't included in our TF-IDF Matrix already.
+'''
 
 def clean_text(text):
     cleaned_text = text.lower()
@@ -29,11 +45,15 @@ def make_prediction():
         review_tf_idf = tf_idf.transform([cleaned_sentence])
         predicted_probabilities = model.predict_proba(review_tf_idf)
         prediction = model.predict(review_tf_idf)[0]
-        print(cleaned_sentence)
-        print(predicted_probabilities)
+        # print(cleaned_sentence)
+        # print(predicted_probabilities)
     else:
         prediction = "No input provided."
-    return render_template('prediction.html', prediction=prediction)#, prediction=prediction)
+    return render_template('prediction.html', 
+                           prediction=prediction,
+                           predicted_probabilities=predicted_probabilities,
+                           cleaned_sentence=cleaned_sentence
+                           )
 
 if __name__ == '__main__':
     app.run(debug=True)

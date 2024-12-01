@@ -1,0 +1,27 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+    /* background-color: ; */
+}
+
+/* input {
+    width: 60vw;
+    height: 30vh;
+    font-size: 24pt;
+
+    text-align: left;
+    vertical-align: top;
+    padding: 0;
+    line-height: 1;
+} */
+
+textarea {
+    width: 60vw;
+    height: 30vh;
+    font-size: 24pt;
+    text-align: left;
+    padding: 10px; /* Add padding for better readability */
+    line-height: 1.5; /* Optional: improve text spacing */
+    resize: none; /* Optional: disable resizing if not desired */
+}
