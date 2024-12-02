@@ -1,0 +1,135 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    background-color: #B7C5AF;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;  */
+    align-items: center;
+}
+
+h1 {
+    color: #0A4615;
+}
+
+p {
+    font-size: 16pt;
+}
+
+hr{
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+button {
+    width: 16vw;
+    height: 8vh;
+    color: #1E2920;
+    background-color: #F5F5F5;
+    border-radius: 15px;
+    border: none;
+    font-size: 32px;
+    margin-top: 2vh;
+}
+
+button:hover {
+    background-color: #D6D6D6;
+    cursor: pointer;
+}
+
+.original-information {
+    width: 50vw;
+    align-items: center;
+    background-color: #F5F5F5;
+    border-radius: 15px;
+    padding: 2rem;
+    /* height: 40vh; */
+}
+
+.black-box-information {
+    width: 50vw;
+    align-items: center;
+    background-color: #F5F5F5;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-top: 3vh;
+}
+
+.black-box-probabilities {
+    width: 50vw;
+    /* height: 85vh; */
+    align-items: center;
+    background-color: #F5F5F5;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-top: 3vh;
+}
+
+
+.probability-box {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    /* height: 85vh; */
+}
+
+.step {
+    background-color: #EAEAEA;  /* Background color for each step */
+    padding: 1rem;
+    margin-bottom: 1rem;  /* Space between sections */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.step2 {
+    background-color: #B8E4AD;  /* Background color for each step */
+    padding: 1rem;
+    margin-bottom: 1rem;  /* Space between sections */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.step2 p {
+    margin: 0.5rem 0;
+    color: black;
+}
+
+.step h4 {
+    margin-top: 0;
+    color: #333;
+}
+
+.step p {
+    margin: 0.5rem 0;
+    color: #555;
+}
+
+/* TABLE */
+
+table {
+    width: 50vw;
+    border-collapse: collapse; 
+    text-align: left;
+    table-layout: fixed; 
+}
+
+th, td {
+    padding: 10px; /* Adds some padding for better readability */
+}   
+
+th:first-child, td:first-child {
+    width: 20%; /* First column width */
+}
+
+th:nth-child(2), td:nth-child(2) {
+    width: 20%; /* Second column width */
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 30%; /* Third column width */
+}
+
+th:nth-child(4), td:nth-child(4) {
+    width: 30%; /* Fourth column width */
+}

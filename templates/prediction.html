@@ -1,9 +1,120 @@
+<!DOCTYPE html>
 <html>
+<head>
 <title>Prediction App Title</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='prediction.css') }}">
+</head>
+
 <body>
-<h1>Prediction App</h1>
-<h3> Your prediction is: {{ prediction }} </h3>
-<p> Sentence : {{ cleaned_sentence }} </p>
-<p> Probability Values: {{ predicted_probabilities }} </p>
+    <div class="original-information">
+        <h1>sentiment prediction ...</h1>
+        <p>{{ cleaned_sentence }} </p>
+        <h3>Your prediction is: {{ prediction }} </h3>
+    </div>
+    <!-- <hr> -->
+
+    <div class="black-box-information">
+
+        <h1>inside the black box ...</h1>
+        <p>Sentence : {{ cleaned_sentence }} </p>
+        
+        <hr>
+
+        <h4>Top 10 Words with TF-IDF and Log Conditional Probabilities</h4>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Word</th>
+                    <th>TF-IDF Value</th>
+                    <th>Positive Log Probability</th>
+                    <th>Negative Log Probability</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for word, tfidf_value, log_prob_positive, log_prob_negative in top_words %}
+                    <tr>
+                        <td>{{ word }}</td>
+                        <td>{{ tfidf_value }}</td>
+                        <td>{{ log_prob_positive }}</td>
+                        <td>{{ log_prob_negative }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h4>Top 10 (TF-IDF * Log Conditional Probabilities)</h4>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Word</th>
+                    <th>TF-IDF * Positive Log Probability</th>
+                    <th>TF-IDF * Negative Log Probability</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for word, tfidf_value, log_prob_positive, log_prob_negative in top_words %}
+                    <tr>
+                        <td>{{ word }}</td>
+                        <td>{{ (log_prob_positive * tfidf_value) | round(3) }}</td>
+                        <td>{{ (log_prob_negative * tfidf_value) | round(3) }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>
+
+    <div class="black-box-probabilities">
+        <div class="probability-box">
+            <section class="step">
+                <h4>Log Prior Probabilities</h4>
+                <p>Negative Prior Probability: {{ prior_probabilities[0] }}</p>
+                <p>Positive Prior Probability: {{ prior_probabilities[1] }}</p>
+            </section>
+    
+            <section class="step2">
+                <h4>Log Prior Probabilities + Sum of the Log Conditional Probabilities</h4>
+                <p>Negative Log Probability: {{ log_probs[0] }} </p>
+                <p>Positive Log Probability: {{ log_probs[1] }} </p>
+            </section>
+    
+            <section class="step2">
+                <p>We did everything that we were supposed to do and we really only need the values above.</p>
+                <p>What we did is a modification of our Naive Bayes Theorem. </p>
+                <br>
+                <p>e.g Classification = P(Positive) * P(word1 | Positive) * P(word2 | Positive)</p>
+                <br>
+                <hr>
+                <p>By logging the probabilities, we are effectively summing due to the properties of log functions: </p>
+                <br>
+                <p>e.g Classification = log(P(Positive)) + (log(P(word1|Positive)) + log(P(word2|Positive))...)</p>
+                <br>
+                <p>The reason why scikit-learn's Naive Bayes Classifer does this is to limit the effects of a word that may cause our joint probability to explode or vanish, 
+                    aswell as increase our computational efficiency.</p>
+                <hr>
+                <p>Similar to what we've been taught in class, we pick the greater value between the log probabilities.</p>
+            </section>
+
+            <section class="step">
+                <h4>Normalizing the Probabilities</h4>
+                <p>Negative Probability: {{ normalized_probs[0] }} </p>
+                <p>Positive Probability: {{ normalized_probs[1] }} </p>
+            </section>
+    
+            <section class="step">
+                <h4>Divide by the Normalization Constant</h4>
+                <p>Normalization Constant: {{ normalization_constant }} </p>
+            </section>
+    
+            <section class="step">
+                <h4>After normalization (divide by the sum of the Normalized Probabilities)</h4>
+                <p>After normalizing the log probabilities, our model believes {{ final_posterior[0] }}% that the sentiment of this review is Negative.</p>
+                <p>You can also say that, our model believes {{ final_posterior[1] }}% that the sentiment of this review is Positive.</p>
+            </section>
+        </div>
+    </div>
+    
+
+    <a href="{{ url_for('index') }}"><button>←</button></a>
 </body>
 </html>

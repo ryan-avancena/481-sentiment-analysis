@@ -1,27 +1,87 @@
 body {
     font-family: Arial;
     margin: 0;
-    padding: 0;
-    /* background-color: ; */
+    /* padding: 0; */
+    background-color: #B7C5AF;
+    padding: 2rem;
 }
 
-/* input {
-    width: 60vw;
-    height: 30vh;
-    font-size: 24pt;
+h1 {
+    color: #0A4615;
+}
 
+p {
+    font-size: 16pt;
+}
+
+form {
+    margin-top: 10vh;
+    align-items: center;
+    text-align: center;
+    border-radius: 30px;
+}
+
+label {
     text-align: left;
-    vertical-align: top;
-    padding: 0;
-    line-height: 1;
-} */
+    color: #1E2920;
+} 
 
 textarea {
     width: 60vw;
-    height: 30vh;
-    font-size: 24pt;
+    height: 40vh;
+    font-size: 16pt;
     text-align: left;
     padding: 10px; /* Add padding for better readability */
     line-height: 1.5; /* Optional: improve text spacing */
     resize: none; /* Optional: disable resizing if not desired */
+    border-radius: 15px;
+    border:none;
+    outline: none;
+}
+
+
+button {
+    width: 16vw;
+    height: 8vh;
+    color: #1E2920;
+    background-color: #F5F5F5;
+    border-radius: 15px;
+    border: none;
+    font-size: 32px;
+    margin-top: 2vh;
+}
+
+button:hover {
+    background-color: #D6D6D6;
+    cursor: pointer;
+}
+
+
+/* TOOL TIPS */
+
+table {
+    width: 50vw;
+    border-collapse: collapse; 
+    text-align: left;
+    table-layout: fixed; 
+}
+
+th, td {
+    padding: 10px; /* Adds some padding for better readability */
+}   
+
+th:first-child, td:first-child {
+    width: 20%; /* First column width */
+}
+
+th:nth-child(2), td:nth-child(2) {
+    width: 20%; /* Second column width */
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 30%; /* Third column width */
+}
+
+th:nth-child(4), td:nth-child(4) {
+    width: 30%; /* Fourth column width */
 }
