@@ -7,18 +7,15 @@ This project analyzes customer reviews to gain insights into customer experience
 ## Repository Contents
 - **`app.py`**: A Flask application that provides mathematical analysis and explains how the Naive Bayes Classifier predicts the sentiment of a review.
 - **`create_models.py`**: A Python script for creating the models used in the Flask application, including the Naive Bayes Classifier and TF-IDF matrix.
+- **`481_mcdonalds_sentiment_analysis.ipynb`**: Interactive Jupyter Notebook utilized for initial development.
+- **`mcdonalds_reviews.csv`**: Dataset utilized for the the entire project.
+- **`mcdonalds_sentiment_model.pkl`**: `pkl` file to import the model into `app.py`.
+- **`tfidf_vectorizer.pkl`**: `pkl` file to import our tf-idf matrix into `app.py`.
+- **`/static`**: holds `.css` files for Flask initialization of our webpage.
+- **`/venv`**: Virtual environment for library imports.
+- **`/templates`**: holds `.html` files for Flask intialization of our webpage.
+- **`requirements.txt`**: All libraries utilized in this project.
 
-## Problem Statement
-As one of the largest fast-food chains globally, McDonald's serves millions of customers daily across thousands of locations. Ensuring consistent service quality is a challenge at this scale. By analyzing customer reviews, McDonald's can:
-- Gain insights into customer experiences.
-- Identify areas for improvement.
-- Make data-driven decisions to enhance service quality across its restaurants.
-
-## Approach
-To tackle this sentiment analysis task, the following steps were implemented:
-1. **Sentiment Classification**: Use a Naive Bayes Classifier to identify positive and negative sentiments in customer reviews.
-2. **Scoring System**: Build a sentiment score for each McDonald's location listed in the dataset.
-3. **Exploratory Data Analysis (EDA)**: Analyze the data to identify regions or areas requiring service quality improvements.
 
 ## How to Run the Application
 Follow these steps to set up and run the application:
